@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <body>
+    <button type="button" onclick="loadUrl('/data.json', false)">Without CORS</button>
+    <button type="button" onclick="loadUrl('/data.json', true)">With CORS</button>
+
+    <script>
+      var secureOrigin = window.location.protocol === 'https:';
+
+      function loadUrl(path, useCors) {
+        var url;
+        if (useCors) {
+          url = (secureOrigin ? 'http://' : 'http://') + window.location.hostname + path;
+        } else {
+          url = path;
+        }
+
+        var xhr = new window.XMLHttpRequest();
+
+        xhr.onerror = function() {
+          console.log('onerror', 'readyState', xhr.readyState, 'status', xhr.status);
+        };
+        xhr.onreadystatechange = function() {
+          console.log('onreadystatechange', 'readyState', xhr.readyState, 'status', xhr.status);
+        };
+        console.log('open');
+        xhr.open('GET', url, true);
+
+        console.log('send');
+        xhr.send(null);
+      }
+    </script>
+  </body>
+</html>

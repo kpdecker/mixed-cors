@@ -1,0 +1,14 @@
+{
+  "name": "mixed-cors",
+  "version": "0.1.0",
+  "description": "test app for https://code.google.com/p/chromium/issues/detail?id=389326",
+  "main": "main.js",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "hapi": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
